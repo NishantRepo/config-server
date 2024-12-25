@@ -1,0 +1,27 @@
+
+spring:
+  application:
+    name: inventory-service
+  kafka:
+    consumer:
+      properties.spring.json.trusted.packages: "*"
+      bootstrap-servers: localhost:9092 # Kafka broker address
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    producer:
+      bootstrap-servers: localhost:9092 # Kafka broker address
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+kafka:
+  topic:
+    name:
+      payment: payment-topic
+      order: order-topic
+      inventory: inventory-topic
+      orchestrator:
+        order: orchestrator-order-topic
+        inventory: orchestrator-inventory-topic
+        payment: orchestrator-payment-topic
+
